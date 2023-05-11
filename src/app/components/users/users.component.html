@@ -1,0 +1,31 @@
+<div *ngIf="loading$ | async">
+    loading
+</div>
+
+<div class="my-2">
+    <button class="btn btn-primary" (click)="addMore()">Add More</button>
+</div>
+
+<h2>Users</h2>
+<ng-container *ngIf="users$ | async as users">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users">
+                <td>{{user.id}}</td>
+                <td>{{user.name}}</td>
+                <td>{{user.email}}</td>
+                <td>
+                    <button class="btn btn-danger" (click)="deleteUser(user.id)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</ng-container>
